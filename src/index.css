@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 30% 98%;
+    /* Light purple-ish background */
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* FloXO Colors */
+    --primary: 258 70% 50%;
+    /* Main Purple */
+    --primary-foreground: 210 40% 98%;
+
+    --flo-orange: 14 85% 50%;
+    --flo-purple: 258 66% 47%;
+    --flo-light-purple: 265 60% 97%;
+    /* Very Light Purple for backgrounds */
+
+    --secondary: 265 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 265 40% 95%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 258 30% 92%;
+    --input: 258 30% 92%;
+    --ring: 258 66% 47%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[#F4F4F9] text-foreground;
+    /* Matching the image's slightly off-white/purple-gray bg */
+  }
+}
