@@ -1,5 +1,5 @@
 import { kpiMockData, dailyStatsData, supplierSamplesData } from "../data/mockDashboard";
-import { KpiData, DailyStat, SupplierStat } from "../types/dashboard";
+import type { KpiData, DailyStat, SupplierStat } from "../types/dashboard";
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 

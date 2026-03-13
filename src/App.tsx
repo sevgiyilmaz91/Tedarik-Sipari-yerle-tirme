@@ -5,7 +5,11 @@ import OrderPlacementPage from "./pages/OrderPlacementPage";
 import DistributionListPage from "./pages/DistributionListPage";
 import ShoppingSampleRegistration from "./pages/ShoppingSampleRegistration";
 import RFQSupplierPage from "./pages/RFQSupplierPage";
+import InspectionRequestsPage from "./pages/InspectionRequestsPage";
+import StoreQualityControlPage from "./pages/StoreQualityControlPage";
+import StoreGeneralControlPage from "./pages/StoreGeneralControlPage";
 import { Toaster } from "@/components/ui/sonner";
+import { InspectionProvider } from "./features/inspector/store/useInspectionStore";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(() => {
@@ -38,18 +42,26 @@ function App() {
         return <ShoppingSampleRegistration />;
       case "rfq-supplier":
         return <RFQSupplierPage />;
+      case "inspection-requests":
+        return <InspectionRequestsPage />;
+      case "store-quality-control":
+        return <StoreQualityControlPage />;
+      case "store-general-control":
+        return <StoreGeneralControlPage />;
       default:
         return <Dashboard />;
     }
   };
 
   return (
-    <>
-      <div id="page-root">
-        {renderPage()}
-      </div>
-      <Toaster position="top-right" />
-    </>
+    <InspectionProvider>
+      <>
+        <div id="page-root">
+          {renderPage()}
+        </div>
+        <Toaster position="top-right" />
+      </>
+    </InspectionProvider>
   );
 }
 

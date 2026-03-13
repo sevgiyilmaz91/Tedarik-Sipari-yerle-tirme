@@ -1,4 +1,4 @@
-import { KpiData, DailyStat, SupplierStat } from "../types/dashboard";
+import type { KpiData, DailyStat, SupplierStat } from "../types/dashboard";
 
 export const kpiMockData: KpiData[] = [
     {

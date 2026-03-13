@@ -95,7 +95,7 @@ const SupplierCapacityGrid: React.FC<SupplierCapacityGridProps> = ({ onBack, tit
                 season: selectedBand.season,
                 supplierCode: selectedBand.supplierCode,
                 productionType: selectedBand.productionType,
-                line: selectedBand.line
+                line: (selectedBand as any).line || ""
             });
             setCalendarData(response);
         } catch (error) {
@@ -119,7 +119,7 @@ const SupplierCapacityGrid: React.FC<SupplierCapacityGridProps> = ({ onBack, tit
         const assignments: { [key: string]: number } = {};
         let remaining = requiredQty;
         let currentDate = new Date(startDate);
-        const dailyCap = selectedBand.allocatedCapacityForFlo;
+        const dailyCap = (selectedBand as any).allocatedCapacityForFlo || 0;
 
         // Simplified pre-planned logic for POC: 
         // 20% on Mon/Wed/Fri, 80% on Tue/Thu
@@ -484,7 +484,7 @@ const SupplierCapacityGrid: React.FC<SupplierCapacityGridProps> = ({ onBack, tit
                     <div className="drawer-title-group">
                         <h3 className="drawer-title">Kapasite Takvimi</h3>
                         <span className="drawer-subtitle">
-                            {selectedBand?.supplierName} · {selectedBand?.productionType} · {selectedBand?.line}
+                            {selectedBand?.supplierName} · {selectedBand?.productionType} · {(selectedBand as any)?.line || "—"}
                         </span>
                     </div>
                     <div className="header-actions">
@@ -543,11 +543,11 @@ const SupplierCapacityGrid: React.FC<SupplierCapacityGridProps> = ({ onBack, tit
                             <div className="capacity-stats">
                                 <div className="stat-card">
                                     <span className="stat-label">Günlük Kapasite</span>
-                                    <span className="stat-value">{selectedBand.allocatedCapacityForFlo.toLocaleString()} Çift</span>
+                                    <span className="stat-value">{((selectedBand as any).allocatedCapacityForFlo || 0).toLocaleString()} Çift</span>
                                 </div>
                                 <div className="stat-card">
                                     <span className="stat-label">Aylık Kapasite (22G)</span>
-                                    <span className="stat-value">{(selectedBand.allocatedCapacityForFlo * 22).toLocaleString()} Çift</span>
+                                    <span className="stat-value">{(((selectedBand as any).allocatedCapacityForFlo || 0) * 22).toLocaleString()} Çift</span>
                                 </div>
                             </div>
 
@@ -557,7 +557,7 @@ const SupplierCapacityGrid: React.FC<SupplierCapacityGridProps> = ({ onBack, tit
                                     {isCalendarLoading ? (
                                         <div style={{ gridColumn: 'span 4', textAlign: 'center', padding: '20px' }}>Yükleniyor...</div>
                                     ) : calendarData?.monthlyData.map(m => {
-                                        const monthlyCap = selectedBand.allocatedCapacityForFlo * 22;
+                                        const monthlyCap = ((selectedBand as any).allocatedCapacityForFlo || 0) * 22;
                                         const addedQty = getAddedQtyForMonth(m.month);
                                         const totalPlanned = m.plannedQuantity + addedQty;
                                         const percentage = Math.round((totalPlanned / monthlyCap) * 100);
@@ -589,7 +589,7 @@ const SupplierCapacityGrid: React.FC<SupplierCapacityGridProps> = ({ onBack, tit
                                     </thead>
                                     <tbody>
                                         {calendarData?.monthlyData.map(m => {
-                                            const monthlyCap = selectedBand.allocatedCapacityForFlo * 22;
+                                             const monthlyCap = ((selectedBand as any).allocatedCapacityForFlo || 0) * 22;
                                             const addedQty = getAddedQtyForMonth(m.month);
                                             const totalPlanned = m.plannedQuantity + addedQty;
                                             const remaining = monthlyCap - totalPlanned;

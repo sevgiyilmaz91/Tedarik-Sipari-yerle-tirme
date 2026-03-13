@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import {
     ChevronRight,
     Home,
-    Search,
     ScanLine,
     Filter,
     Download,

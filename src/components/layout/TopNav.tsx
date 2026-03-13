@@ -33,6 +33,10 @@ export function TopNav() {
             items: ["Üretim Süreci", "Kalite Süreci", "Inspection Talepleri", "Ticari Karar Takip Ekranı"],
         },
         {
+            title: "Kalite Kontrol",
+            items: ["Mağaza Kalite Kontrol", "Mağaza Genel Kontrol Raporu"],
+        },
+        {
             title: "Sipariş Yerleştirme",
             items: ["Sipariş Yerleştirme", "Tedarikçi Sipariş Dağıtım Listesi", "Tekliflerim / İhaleler"],
             target: "#order-placement"
@@ -66,6 +70,18 @@ export function TopNav() {
         }
         if (item === "Tekliflerim / İhaleler") {
             navigateTo("#rfq-supplier");
+            return;
+        }
+        if (item === "Inspection Talepleri") {
+            navigateTo("#inspection-requests");
+            return;
+        }
+        if (item === "Mağaza Kalite Kontrol") {
+            navigateTo("#store-quality-control");
+            return;
+        }
+        if (item === "Mağaza Genel Kontrol Raporu") {
+            navigateTo("#store-general-control");
             return;
         }
 
